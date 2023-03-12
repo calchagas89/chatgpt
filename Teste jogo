@@ -1,0 +1,30 @@
+import random
+
+# Definir o intervalo do jogo
+min = 1
+max = 100
+
+# Gerar um número aleatório dentro do intervalo
+target_number = random.randint(min, max)
+
+# Definir o número de tentativas
+max_tries = 5
+current_try = 0
+
+# Loop principal do jogo
+while current_try < max_tries:
+    current_try += 1
+    print(f"Tentativa {current_try} de {max_tries}. Digite um número entre {min} e {max}:")
+    guess = int(input())
+    if guess < min or guess > max:
+        print(f"Digite um número entre {min} e {max}!")
+    elif guess == target_number:
+        print(f"Parabéns! Você acertou em {current_try} tentativas.")
+        break
+    else:
+        message = "Tente um número maior." if guess < target_number else "Tente um número menor."
+        print(message)
+
+# Mostrar o resultado final
+if current_try >= max_tries:
+    print(f"Você perdeu! O número era {target_number}.")
